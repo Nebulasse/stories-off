@@ -21,5 +21,10 @@ export default defineConfig({
   esbuild: {
     drop: ['console', 'debugger'],
     legalComments: 'none'
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'es2020'
+    }
   }
 }) 
