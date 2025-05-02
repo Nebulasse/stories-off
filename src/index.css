@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Rajdhani:wght@700&family=Oswald:wght@700&family=Barlow+Condensed:wght@700&display=swap');
+
+:root {
+  --font-main: 'Inter', Arial, sans-serif;
+  --font-heading: 'Oswald', 'Inter', Arial, sans-serif;
+  --font-techno: 'Rajdhani', 'Inter', Arial, sans-serif;
+  --font-creative: 'Barlow Condensed', 'Inter', Arial, sans-serif;
+}
+
+.techno {
+  font-family: var(--font-techno);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.creative {
+  font-family: var(--font-creative);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+} 
