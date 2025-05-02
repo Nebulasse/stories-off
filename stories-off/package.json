@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "rimraf dist",
-    "build": "cross-env CI=false tsc && vite build",
+    "build": "cross-env CI=false tsc --noEmit && vite build",
     "postbuild": "tsc --emitDeclarationOnly",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
