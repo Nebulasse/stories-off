@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import {
   Box,
   Container,
@@ -74,7 +74,7 @@ const Home = () => {
                   multiline
                   rows={4}
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
                   placeholder="Введите сообщение от девушки..."
                   variant="outlined"
                 />
