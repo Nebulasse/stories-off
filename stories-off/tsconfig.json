@@ -21,7 +21,17 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types", "./node_modules/@mui/types"],
+    "types": [
+      "node",
+      "react",
+      "react-dom",
+      "react-router-dom",
+      "@mui/material",
+      "@mui/icons-material",
+      "framer-motion",
+      "axios"
+    ]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
