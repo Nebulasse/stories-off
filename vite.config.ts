@@ -17,5 +17,9 @@ export default defineConfig({
         drop_debugger: true
       }
     }
+  },
+  esbuild: {
+    drop: ['console', 'debugger'],
+    legalComments: 'none'
   }
 }) 
