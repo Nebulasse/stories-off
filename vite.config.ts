@@ -26,5 +26,8 @@ export default defineConfig({
     esbuildOptions: {
       target: 'es2020'
     }
+  },
+  define: {
+    'process.env.NODE_ENV': '"production"'
   }
 }) 
