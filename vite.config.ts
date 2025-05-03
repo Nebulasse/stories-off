@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
@@ -16,7 +17,30 @@ export default defineConfig({
         drop_console: true,
         drop_debugger: true
       }
-    }
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': [
+            'react',
+            'react-dom',
+            'react-router-dom',
+            '@mui/material',
+            '@mui/icons-material',
+            'framer-motion'
+          ],
+          'auth': [
+            './src/contexts/AuthContext.tsx',
+            './src/services/auth.ts'
+          ],
+          'ai': [
+            './src/services/ai.ts',
+            './src/services/ocr.ts'
+          ]
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000
   },
   esbuild: {
     drop: ['console', 'debugger'],
@@ -29,5 +53,10 @@ export default defineConfig({
   },
   define: {
     'process.env.NODE_ENV': '"production"'
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
   }
 }) 

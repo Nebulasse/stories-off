@@ -20,7 +20,7 @@ const Login = () => {
   const [resetEmailSent, setResetEmailSent] = useState(false);
   const [newPassword, setNewPassword] = useState('');
   const [showResetPassword, setShowResetPassword] = useState(false);
-  const { signIn } = useAuth();
+  const { signIn, getCurrentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useTheme();
@@ -40,6 +40,13 @@ const Login = () => {
     try {
       const result = await signIn(email, password);
       if (result.error) throw new Error(result.error);
+      
+      // Проверяем, что пользователь действительно вошел
+      const { user: currentUser } = await getCurrentUser();
+      if (!currentUser) {
+        throw new Error('Ошибка входа в систему');
+      }
+      
       navigate('/app');
     } catch (err: any) {
       setError(err.message || 'Ошибка при входе');

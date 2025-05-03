@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { ReactNode } from 'react';
 import {
   AppBar,
   Box,

@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import {
   Box,
   Typography,
@@ -9,7 +9,6 @@ import {
   useTheme,
   useMediaQuery
 } from '@mui/material';
-import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../config/supabase';
 
@@ -21,7 +20,6 @@ const Register = () => {
   const [verificationCode, setVerificationCode] = useState('');
   const [showVerification, setShowVerification] = useState(false);
   const [verificationSent, setVerificationSent] = useState(false);
-  const { signUp } = useAuth();
   const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

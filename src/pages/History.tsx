@@ -28,13 +28,18 @@ import { useAuth } from '../contexts/AuthContext';
 import { getMessages, deleteMessage, toggleFavorite } from '../services/history';
 import { Message } from '../types';
 
+type MessageWithDefaults = Message & {
+  generated_response: string;
+  is_favorite: boolean;
+};
+
 const History = () => {
   const { user } = useAuth();
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<MessageWithDefaults[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [showCopied, setShowCopied] = useState(false);
-  const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
+  const [selectedMessage, setSelectedMessage] = useState<MessageWithDefaults | null>(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -46,9 +51,13 @@ const History = () => {
     if (!user) return;
 
     try {
-      const { messages, error } = await getMessages(user.id);
+      const { data: messages, error } = await getMessages(user.id);
       if (error) throw error;
-      setMessages(messages || []);
+      setMessages(messages?.map(msg => ({
+        ...msg,
+        generated_response: (msg as unknown as MessageWithDefaults).generated_response || '',
+        is_favorite: (msg as unknown as MessageWithDefaults).is_favorite || false
+      })) || []);
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -76,7 +85,7 @@ const History = () => {
       const { error } = await toggleFavorite(messageId);
       if (error) throw error;
       setMessages(messages.map(msg => 
-        msg.id === messageId ? { ...msg, isFavorite: !msg.isFavorite } : msg
+        msg.id === messageId ? { ...msg, is_favorite: !msg.is_favorite } : msg
       ));
     } catch (err: any) {
       setError(err.message);
@@ -133,7 +142,7 @@ const History = () => {
                   </Typography>
                 </Box>
                 <ListItemText 
-                  primary={message.text.substring(0, 100) + '...'} 
+                  primary={message.generated_response.substring(0, 100) + '...'} 
                   sx={{ mt: 1 }}
                 />
                 <ListItemSecondaryAction>
@@ -145,7 +154,7 @@ const History = () => {
                         handleToggleFavorite(message.id);
                       }}
                     >
-                      {message.isFavorite ? <StarIcon color="primary" /> : <StarBorderIcon />}
+                      {message.is_favorite ? <StarIcon color="primary" /> : <StarBorderIcon />}
                     </IconButton>
                   </Tooltip>
                   <Tooltip title="Копировать">
@@ -153,7 +162,7 @@ const History = () => {
                       edge="end" 
                       onClick={(e) => {
                         e.stopPropagation();
-                        handleCopy(message.text);
+                        handleCopy(message.generated_response);
                       }}
                     >
                       <ContentCopyIcon />
@@ -197,11 +206,11 @@ const History = () => {
             </DialogTitle>
             <DialogContent>
               <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', mt: 2 }}>
-                {selectedMessage.text}
+                {selectedMessage.generated_response}
               </Typography>
             </DialogContent>
             <DialogActions>
-              <Button onClick={() => handleCopy(selectedMessage.text)}>
+              <Button onClick={() => handleCopy(selectedMessage.generated_response)}>
                 Копировать
               </Button>
               <Button onClick={() => setSelectedMessage(null)}>

@@ -193,4 +193,22 @@ export const theme = createTheme({
       }
     }
   }
-}); 
+});
+
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    techno: React.CSSProperties;
+    creative: React.CSSProperties;
+  }
+  interface TypographyVariantsOptions {
+    techno?: React.CSSProperties;
+    creative?: React.CSSProperties;
+  }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    techno: true;
+    creative: true;
+  }
+} 

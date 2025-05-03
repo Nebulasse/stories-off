@@ -13,7 +13,6 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-  Divider,
   Switch,
   FormControlLabel
 } from '@mui/material';

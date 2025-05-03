@@ -1,7 +1,7 @@
 import { supabase } from '../config/supabase';
 
 export const updatePassword = async (
-  userId: string,
+  _userId: string,
   newPassword: string
 ): Promise<{ error: string | null }> => {
   try {
@@ -18,7 +18,7 @@ export const updatePassword = async (
 };
 
 export const updateEmail = async (
-  userId: string,
+  _userId: string,
   newEmail: string
 ): Promise<{ error: string | null }> => {
   try {

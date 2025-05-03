@@ -23,11 +23,19 @@ import { useDropzone } from 'react-dropzone';
 import { MessageStyle } from '../types';
 import { generateResponses } from '../services/ai';
 import { recognizeText } from '../services/ocr';
-import { rateLimitService } from '../services/rateLimit';
 import { useAuth } from '../contexts/AuthContext';
 import { saveMessage } from '../services/history';
 import Payment from './Payment';
 import { checkGenerationLimit } from '../services/ai';
+import { SelectChangeEvent } from '@mui/material';
+import { submitData } from '../services/api';
+
+interface Limits {
+  remaining: number;
+  total: number;
+  resetTime: string;
+  canGenerate: boolean;
+}
 
 const Home = () => {
   const navigate = useNavigate();
@@ -38,14 +46,10 @@ const Home = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showCopied, setShowCopied] = useState(false);
-  const [remainingRequests, setRemainingRequests] = useState(10);
+  const [remainingRequests] = useState(5);
   const [generationProgress, setGenerationProgress] = useState(0);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [limits, setLimits] = useState<{
-    remaining: number;
-    total: number;
-    resetTime: string;
-  } | null>(null);
+  const [limits, setLimits] = useState<Limits | null>(null);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -64,7 +68,8 @@ const Home = () => {
       setLimits({
         remaining: limits.remaining,
         total: limits.total,
-        resetTime: limits.resetTime
+        resetTime: limits.resetTime,
+        canGenerate: limits.canGenerate
       });
     } catch (error) {
       console.error('Error loading limits:', error);
@@ -76,19 +81,14 @@ const Home = () => {
     setText(e.target.value);
   }, []);
 
-  const handleStyleChange = useCallback((e: React.ChangeEvent<{ value: unknown }>) => {
-    setStyle(e.target.value as MessageStyle);
-  }, []);
+  const handleStyleChange = (event: SelectChangeEvent<MessageStyle>) => {
+    setStyle(event.target.value as MessageStyle);
+  };
 
   const handleCopy = useCallback((text: string) => {
     navigator.clipboard.writeText(text);
     setShowCopied(true);
   }, []);
-
-  const updateRemainingRequests = useCallback(() => {
-    const remaining = rateLimitService.getRemainingRequests(user?.id || null);
-    setRemainingRequests(remaining);
-  }, [user?.id]);
 
   const handleGenerate = async () => {
     if (!user) {
@@ -120,10 +120,18 @@ const Home = () => {
       setGenerationProgress(100);
       setResponses(newResponses);
       
-      // Обновляем лимиты после генерации
-      await loadLimits();
-
+      // Отправляем данные на сервер
       if (user) {
+        await submitData({
+          userId: user.id,
+          inputText: text,
+          style,
+          responses: newResponses
+        });
+
+        // Обновляем лимиты после генерации
+        await loadLimits();
+
         await saveMessage(user.id, text, style, newResponses);
       }
     } catch (error) {

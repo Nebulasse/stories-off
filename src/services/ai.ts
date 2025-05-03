@@ -1,16 +1,6 @@
 import { MessageStyle } from '../types';
 import { supabase } from '../config/supabase';
 
-// Объявляем типы для env переменных
-declare global {
-  interface ImportMeta {
-    env: {
-      VITE_DEEPSEEK_API_URL: string;
-      VITE_DEEPSEEK_API_KEY: string;
-    }
-  }
-}
-
 const DEEPSEEK_API_URL = import.meta.env.VITE_DEEPSEEK_API_URL;
 const DEEPSEEK_API_KEY = import.meta.env.VITE_DEEPSEEK_API_KEY;
 
@@ -122,7 +112,7 @@ export const generateResponses = async (
     const variants = content
       .split(/\d+\.\s+/)
       .filter(Boolean)
-      .map(text => text.trim());
+      .map((text: string) => text.trim());
 
     if (variants.length) {
       responseCache.set(cacheKey, {
@@ -143,28 +133,6 @@ export const generateResponses = async (
   }
 };
 
-const generateResponsesFromAPI = async (
-  text: string,
-  style: MessageStyle
-): Promise<string[]> => {
-  // Здесь должна быть реальная интеграция с API
-  // Для примера используем заглушку
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const responses = [
-        `Ответ 1 в стиле ${style}`,
-        `Ответ 2 в стиле ${style}`,
-        `Ответ 3 в стиле ${style}`
-      ];
-      resolve(responses);
-    }, 1000); // Имитация задержки API
-  });
-};
-
-// Константы для лимитов
-const DAILY_LIMIT = 5;
-const PREMIUM_DAILY_LIMIT = 50;
-
 // Функция для получения лимитов пользователя
 export const getUserLimits = async (userId: string): Promise<{
   remaining: number;
@@ -173,7 +141,7 @@ export const getUserLimits = async (userId: string): Promise<{
 }> => {
   try {
     // Проверяем существование записи лимитов
-    const { data: existingLimit, error: checkError } = await supabase
+    const { data: existingLimit } = await supabase
       .from('user_limits')
       .select('*')
       .eq('user_id', userId)

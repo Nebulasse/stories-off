@@ -3,10 +3,14 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "vercel-build": "tsc && vite build",
+    "build": "tsc --noEmit && vite build",
+    "vercel-build": "npm install && tsc --noEmit && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -17,6 +21,7 @@
     "@mui/material": "^5.17.1",
     "@supabase/supabase-js": "^2.39.0",
     "@types/react-router-dom": "^5.3.3",
+    "@vercel/node": "^5.1.15",
     "axios": "^1.6.2",
     "framer-motion": "^12.9.4",
     "react": "^18.2.0",

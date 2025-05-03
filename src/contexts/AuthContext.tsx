@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User } from '../types';
 import { getCurrentUser, signIn, signUp, signOut } from '../services/auth';
+import { supabase } from '../config/supabase';
 
 interface AuthContextType {
   user: User | null;
@@ -20,6 +21,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     checkUser();
+
+    // Подписываемся на изменения состояния аутентификации
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser(session.user as User);
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const checkUser = async () => {
