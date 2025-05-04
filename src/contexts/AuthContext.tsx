@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User } from '../types';
-import { getCurrentUser, signIn, signUp, signOut } from '../services/auth';
+// import { getCurrentUser, signIn, signUp, signOut } from '../services/auth'; // УДАЛЕНО как неиспользуемое
 import { supabase } from '../config/supabase';
 
 interface AuthContextType {
@@ -60,13 +60,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         email,
         password,
       });
-      
+
       if (error) throw error;
-      
+
       if (data.user) {
         setUser(data.user as User);
       }
-      
+
       return { user: data.user as User, error: null };
     } catch (err: any) {
       setError(err.message);
@@ -81,9 +81,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         email,
         password,
       });
-      
+
       if (error) throw error;
-      
+
       if (data.user) {
         setUser(data.user as User);
       }

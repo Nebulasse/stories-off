@@ -9,7 +9,6 @@ import {
   useTheme,
   useMediaQuery
 } from '@mui/material';
-import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from '../config/supabase';
 
@@ -20,7 +19,6 @@ const Login = () => {
   const [resetEmailSent, setResetEmailSent] = useState(false);
   const [newPassword, setNewPassword] = useState('');
   const [showResetPassword, setShowResetPassword] = useState(false);
-  const { signIn, getCurrentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useTheme();
@@ -42,7 +40,7 @@ const Login = () => {
         email,
         password,
       });
-      
+
       if (error) {
         if (error.message === 'Email not confirmed') {
           setError('Пожалуйста, подтвердите ваш email перед входом');
@@ -50,7 +48,7 @@ const Login = () => {
           throw error;
         }
       }
-      
+
       if (data.user) {
         navigate('/app');
       }

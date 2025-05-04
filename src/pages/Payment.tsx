@@ -7,7 +7,7 @@ const Payment = () => {
 
   const features = [
     'Неограниченное количество генераций',
-    'Доступ ко всем стилям общения',
+    'Доступ к тестовым стилям общения',
     'Приоритетная поддержка',
     'Расширенная история сообщений',
     'Дополнительные функции анализа'
@@ -25,8 +25,9 @@ const Payment = () => {
         sx={{ 
           p: isMobile ? 3 : 4,
           borderRadius: 2,
-          background: 'linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%)',
-          border: '1px solid rgba(0, 0, 0, 0.1)'
+          background: '#140100',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          color: '#ffffff'
         }}
       >
         <Typography 
@@ -34,7 +35,7 @@ const Payment = () => {
           align="center" 
           gutterBottom
           sx={{
-            background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+            background: 'linear-gradient(45deg, #FFD700 30%, #FFA500 90%)',
             backgroundClip: 'text',
             textFillColor: 'transparent',
             fontWeight: 'bold',
@@ -45,10 +46,10 @@ const Payment = () => {
         </Typography>
 
         <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Typography variant="h3" sx={{ fontWeight: 'bold', color: '#2196F3' }}>
+          <Typography variant="h3" sx={{ fontWeight: 'bold', color: '#FFD700' }}>
             299₽
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary">
+          <Typography variant="subtitle1" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
             в месяц
           </Typography>
         </Box>
@@ -57,9 +58,9 @@ const Payment = () => {
           {features.map((feature, index) => (
             <ListItem key={index} sx={{ py: 1 }}>
               <ListItemIcon sx={{ minWidth: 40 }}>
-                <CheckCircleIcon sx={{ color: '#2196F3' }} />
+                <CheckCircleIcon sx={{ color: '#FFD700' }} />
               </ListItemIcon>
-              <ListItemText primary={feature} />
+              <ListItemText primary={feature} sx={{ color: '#ffffff' }} />
             </ListItem>
           ))}
         </List>
@@ -71,9 +72,10 @@ const Payment = () => {
             fullWidth
             sx={{
               py: 1.5,
-              background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+              background: 'linear-gradient(45deg, #FFD700 30%, #FFA500 90%)',
+              color: '#000000',
               '&:hover': {
-                background: 'linear-gradient(45deg, #1976D2 30%, #1E88E5 90%)',
+                background: 'linear-gradient(45deg, #FFA500 30%, #FF8C00 90%)',
               }
             }}
           >
@@ -86,11 +88,11 @@ const Payment = () => {
             fullWidth
             sx={{
               py: 1.5,
-              borderColor: '#2196F3',
-              color: '#2196F3',
+              borderColor: '#FFD700',
+              color: '#FFD700',
               '&:hover': {
-                borderColor: '#1976D2',
-                backgroundColor: 'rgba(33, 150, 243, 0.04)'
+                borderColor: '#FFA500',
+                backgroundColor: 'rgba(255, 215, 0, 0.1)'
               }
             }}
           >
@@ -100,11 +102,11 @@ const Payment = () => {
 
         <Typography 
           variant="caption" 
-          color="text.secondary" 
           sx={{ 
             display: 'block', 
             textAlign: 'center', 
-            mt: 3 
+            mt: 3,
+            color: 'rgba(255, 255, 255, 0.7)'
           }}
         >
           Подписка продлевается автоматически. Отменить можно в любой момент.

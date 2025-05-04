@@ -112,7 +112,8 @@ export const generateResponses = async (
     const variants = content
       .split(/\d+\.\s+/)
       .filter(Boolean)
-      .map((text: string) => text.trim());
+      .map((text: string) => text.trim())
+      .map((text: string) => text.replace(/^["']|["']$/g, ''));
 
     if (variants.length) {
       responseCache.set(cacheKey, {
