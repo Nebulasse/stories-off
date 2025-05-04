@@ -38,16 +38,22 @@ const Login = () => {
     setError(null);
 
     try {
-      const result = await signIn(email, password);
-      if (result.error) throw new Error(result.error);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
       
-      // Проверяем, что пользователь действительно вошел
-      const { user: currentUser } = await getCurrentUser();
-      if (!currentUser) {
-        throw new Error('Ошибка входа в систему');
+      if (error) {
+        if (error.message === 'Email not confirmed') {
+          setError('Пожалуйста, подтвердите ваш email перед входом');
+        } else {
+          throw error;
+        }
       }
       
-      navigate('/app');
+      if (data.user) {
+        navigate('/app');
+      }
     } catch (err: any) {
       setError(err.message || 'Ошибка при входе');
     }

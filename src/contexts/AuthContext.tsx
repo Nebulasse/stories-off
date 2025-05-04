@@ -40,9 +40,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const checkUser = async () => {
     try {
-      const { user, error } = await getCurrentUser();
-      if (error) throw error;
-      setUser(user);
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        setUser(session.user as User);
+      } else {
+        setUser(null);
+      }
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -53,10 +56,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const handleSignIn = async (email: string, password: string) => {
     try {
       setError(null);
-      const { user, error } = await signIn(email, password);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      
       if (error) throw error;
-      setUser(user);
-      return { user, error: null };
+      
+      if (data.user) {
+        setUser(data.user as User);
+      }
+      
+      return { user: data.user as User, error: null };
     } catch (err: any) {
       setError(err.message);
       return { user: null, error: err.message };
@@ -66,9 +77,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const handleSignUp = async (email: string, password: string) => {
     try {
       setError(null);
-      const { user, error } = await signUp(email, password);
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+      
       if (error) throw error;
-      setUser(user);
+      
+      if (data.user) {
+        setUser(data.user as User);
+      }
     } catch (err: any) {
       setError(err.message);
       throw err;
@@ -78,7 +96,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const handleSignOut = async () => {
     try {
       setError(null);
-      const { error } = await signOut();
+      const { error } = await supabase.auth.signOut();
       if (error) throw error;
       setUser(null);
     } catch (err: any) {
@@ -94,12 +112,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     signIn: handleSignIn,
     signUp: handleSignUp,
     signOut: handleSignOut,
-    getCurrentUser
+    getCurrentUser: checkUser
   };
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };

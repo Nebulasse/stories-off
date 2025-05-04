@@ -176,12 +176,17 @@ export const getUserLimits = async (userId: string): Promise<{
       };
     }
 
-    // Проверяем, нужно ли сбросить лимиты
+    // Проверяем, нужно ли сбросить лимиты (по московскому времени)
     const lastReset = new Date(existingLimit.last_reset);
     const now = new Date();
-    const isNewDay = lastReset.getDate() !== now.getDate() || 
-                     lastReset.getMonth() !== now.getMonth() || 
-                     lastReset.getFullYear() !== now.getFullYear();
+    
+    // Конвертируем в московское время
+    const lastResetMoscow = new Date(lastReset.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
+    const nowMoscow = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
+    
+    const isNewDay = lastResetMoscow.getDate() !== nowMoscow.getDate() || 
+                     lastResetMoscow.getMonth() !== nowMoscow.getMonth() || 
+                     lastResetMoscow.getFullYear() !== nowMoscow.getFullYear();
 
     if (isNewDay) {
       // Сбрасываем лимиты

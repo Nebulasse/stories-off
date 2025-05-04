@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
-import { updatePassword, updateEmail, deleteAccount } from '../services/settings';
+import { updatePassword, deleteAccount } from '../services/settings';
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -31,7 +31,6 @@ const Settings = () => {
   // Состояния для форм
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [newEmail, setNewEmail] = useState('');
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const handlePasswordChange = async (e: React.FormEvent) => {
@@ -59,27 +58,6 @@ const Settings = () => {
       setSuccess('Пароль успешно изменен');
       setNewPassword('');
       setConfirmPassword('');
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleEmailChange = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!user) return;
-
-    setLoading(true);
-    setError('');
-    setSuccess('');
-
-    try {
-      const { error } = await updateEmail(user.id, newEmail);
-      if (error) throw error;
-
-      setSuccess('Email успешно изменен');
-      setNewEmail('');
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -176,32 +154,6 @@ const Settings = () => {
       </Paper>
 
       <Paper sx={{ p: 3, mb: 3 }}>
-        <Typography variant="h6" gutterBottom>
-          Изменить email
-        </Typography>
-        <form onSubmit={handleEmailChange}>
-          <TextField
-            fullWidth
-            type="email"
-            label="Новый email"
-            value={newEmail}
-            onChange={(e) => setNewEmail(e.target.value)}
-            margin="normal"
-            required
-            disabled={loading}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            disabled={loading || !newEmail}
-            sx={{ mt: 2 }}
-          >
-            {loading ? <CircularProgress size={24} /> : 'Изменить email'}
-          </Button>
-        </form>
-      </Paper>
-
-      <Paper sx={{ p: 3 }}>
         <Typography variant="h6" gutterBottom color="error">
           Опасная зона
         </Typography>

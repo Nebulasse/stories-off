@@ -17,23 +17,6 @@ export const updatePassword = async (
   }
 };
 
-export const updateEmail = async (
-  _userId: string,
-  newEmail: string
-): Promise<{ error: string | null }> => {
-  try {
-    const { error } = await supabase.auth.updateUser({
-      email: newEmail
-    });
-
-    if (error) throw error;
-
-    return { error: null };
-  } catch (error: any) {
-    return { error: error.message };
-  }
-};
-
 export const deleteAccount = async (
   userId: string
 ): Promise<{ error: string | null }> => {

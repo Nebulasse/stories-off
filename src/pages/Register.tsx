@@ -33,19 +33,39 @@ const Register = () => {
       return;
     }
 
+    if (password.length < 6) {
+      setError('Пароль должен содержать минимум 6 символов');
+      return;
+    }
+
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/app`
+          emailRedirectTo: `${window.location.origin}/app`,
+          data: {
+            email_confirm: true
+          }
         }
       });
       
       if (error) throw error;
       
-      setVerificationSent(true);
-      setShowVerification(true);
+      if (data.user) {
+        setVerificationSent(true);
+        setShowVerification(true);
+        
+        // Отправляем код подтверждения
+        const { error: otpError } = await supabase.auth.signInWithOtp({
+          email,
+          options: {
+            emailRedirectTo: `${window.location.origin}/app`
+          }
+        });
+        
+        if (otpError) throw otpError;
+      }
     } catch (err: any) {
       setError(err.message || 'Ошибка при регистрации');
     }
@@ -56,7 +76,7 @@ const Register = () => {
     setError(null);
 
     try {
-      const { error } = await supabase.auth.verifyOtp({
+      const { data, error } = await supabase.auth.verifyOtp({
         email,
         token: verificationCode,
         type: 'email'
@@ -64,9 +84,29 @@ const Register = () => {
       
       if (error) throw error;
       
-      navigate('/app');
+      if (data.user) {
+        navigate('/app');
+      }
     } catch (err: any) {
       setError(err.message || 'Ошибка при проверке кода');
+    }
+  };
+
+  const handleResendCode = async () => {
+    try {
+      setError(null);
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/app`
+        }
+      });
+      
+      if (error) throw error;
+      
+      setVerificationSent(true);
+    } catch (err: any) {
+      setError(err.message || 'Ошибка при отправке кода');
     }
   };
 
@@ -129,6 +169,16 @@ const Register = () => {
               sx={{ mt: 2 }}
             >
               Подтвердить
+            </Button>
+
+            <Button
+              fullWidth
+              variant="text"
+              onClick={handleResendCode}
+              size={isMobile ? "small" : "medium"}
+              sx={{ mt: 1 }}
+            >
+              Отправить код повторно
             </Button>
           </form>
         ) : (

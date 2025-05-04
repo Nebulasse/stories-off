@@ -42,11 +42,11 @@ create index user_limits_last_reset_idx on public.user_limits(last_reset);
 create or replace function reset_daily_limits() returns void language plpgsql security definer as $$ begin
 update public.user_limits
 set daily_generations = case
-        when premium then 50
+        when premium then 999999
         else 5
     end,
     last_reset = timezone('utc'::text, now())
-where last_reset < date_trunc('day', timezone('utc'::text, now()));
+where timezone('Europe/Moscow', last_reset) < date_trunc('day', timezone('Europe/Moscow', now()));
 end;
 $$;
 -- Функция для очистки старых сообщений
