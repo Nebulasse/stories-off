@@ -17,9 +17,7 @@ import {
   useTheme,
   useMediaQuery,
   LinearProgress,
-  Link,
-  Badge,
-  IconButton
+  Link
 } from '@mui/material';
 import { useDropzone } from 'react-dropzone';
 import { MessageStyle } from '../types';
@@ -53,7 +51,6 @@ const Home = () => {
   const [generationProgress, setGenerationProgress] = useState(0);
   const [isGenerating, setIsGenerating] = useState(false);
   const [limits, setLimits] = useState<Limits | null>(null);
-  const [showLimits, setShowLimits] = useState(true);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -251,7 +248,7 @@ const Home = () => {
           </>
         )}
 
-        {user && limits && showLimits && (
+        {user && limits && (
           <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
             <Typography variant="body2" color="text.secondary">
               Осталось генераций: {limits.remaining}/{limits.total}

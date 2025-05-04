@@ -105,6 +105,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const getCurrentUser = async (): Promise<{ user: User | null; error: string | null }> => {
+    try {
+      const { data, error } = await supabase.auth.getUser();
+      if (error) throw error;
+      return { user: data.user as User, error: null };
+    } catch (err: any) {
+      return { user: null, error: err.message };
+    }
+  };
+
   const value = {
     user,
     loading,
@@ -112,7 +122,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     signIn: handleSignIn,
     signUp: handleSignUp,
     signOut: handleSignOut,
-    getCurrentUser: checkUser
+    getCurrentUser: getCurrentUser
   };
 
   return (
