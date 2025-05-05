@@ -54,31 +54,6 @@ const Navigation = () => {
     setDrawerOpen(open);
   };
 
-  const menuItems = (
-    <>
-      {user ? (
-        <>
-          <MenuItem onClick={() => { handleClose(); navigate('/history'); }}>
-            История
-          </MenuItem>
-          <MenuItem onClick={() => { handleClose(); navigate('/settings'); }}>
-            Настройки
-          </MenuItem>
-          <MenuItem onClick={handleSignOut}>Выйти</MenuItem>
-        </>
-      ) : (
-        <>
-          <MenuItem onClick={() => { handleClose(); navigate('/login'); }}>
-            Войти
-          </MenuItem>
-          <MenuItem onClick={() => { handleClose(); navigate('/register'); }}>
-            Регистрация
-          </MenuItem>
-        </>
-      )}
-    </>
-  );
-
   const drawerContent = (
     <Box
       sx={{ width: 250 }}
@@ -88,36 +63,42 @@ const Navigation = () => {
     >
       <List>
         <ListItem>
-          <Typography variant="h6" component={Link} to={user ? "/app" : "/"} sx={{ textDecoration: 'none', color: 'inherit' }}>StoriesOff</Typography>
+          <Typography variant="h6" component="div">
+            StoriesOff
+          </Typography>
         </ListItem>
         <Divider />
-        {!loading && (
+        {user ? (
           <>
-            {user ? (
-              <>
-                <ListItem button onClick={() => navigate('/history')}>
-                  <ListItemText primary="История" />
-                </ListItem>
-                <ListItem button onClick={() => navigate('/settings')}>
-                  <ListItemText primary="Настройки" />
-                </ListItem>
-                <ListItem button onClick={handleSignOut}>
-                  <ListItemText primary="Выйти" />
-                </ListItem>
-              </>
-            ) : (
-              <>
-                <ListItem button onClick={() => navigate('/login')}>
-                  <ListItemText primary="Войти" />
-                </ListItem>
-                <ListItem button onClick={() => navigate('/register')}>
-                  <ListItemText primary="Регистрация" />
-                </ListItem>
-              </>
-            )}
-            <Divider />
-            <ListItem button onClick={() => navigate('/payment')}>
-              <ListItemText primary="Премиум" sx={{ color: 'primary.main' }} />
+            <ListItem button onClick={() => navigate('/app')}>
+              <ListItemText primary="Главная" />
+            </ListItem>
+            <ListItem button onClick={() => navigate('/history')}>
+              <ListItemText primary="История" />
+            </ListItem>
+            <ListItem button onClick={() => navigate('/contacts')}>
+              <ListItemText primary="Контакты" />
+            </ListItem>
+            <ListItem button onClick={() => navigate('/settings')}>
+              <ListItemText primary="Настройки" />
+            </ListItem>
+            <ListItem button onClick={handleSignOut}>
+              <ListItemText primary="Выйти" />
+            </ListItem>
+          </>
+        ) : (
+          <>
+            <ListItem button onClick={() => navigate('/')}>
+              <ListItemText primary="Главная" />
+            </ListItem>
+            <ListItem button onClick={() => navigate('/contacts')}>
+              <ListItemText primary="Контакты" />
+            </ListItem>
+            <ListItem button onClick={() => navigate('/login')}>
+              <ListItemText primary="Войти" />
+            </ListItem>
+            <ListItem button onClick={() => navigate('/register')}>
+              <ListItemText primary="Регистрация" />
             </ListItem>
           </>
         )}
@@ -151,102 +132,82 @@ const Navigation = () => {
           </>
         ) : (
           <>
-            <Typography variant="h6" sx={{ flexGrow: 1 }}>
-              <Link to={user ? "/app" : "/"} style={{ textDecoration: 'none', color: 'inherit' }}>StoriesOff</Link>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, cursor: 'pointer' }}
+              onClick={() => navigate('/')}
+            >
+              StoriesOff
             </Typography>
-            {!loading && (
+            {user ? (
               <>
-                {user ? (
-                  <>
-                    <Button 
-                      color="inherit" 
-                      onClick={() => navigate('/history')}
-                      sx={{ mr: 2 }}
-                    >
-                      История
-                    </Button>
-                    <Button 
-                      color="inherit" 
-                      onClick={() => navigate('/settings')}
-                      sx={{ mr: 2 }}
-                    >
-                      Настройки
-                    </Button>
-                    <Button 
-                      color="primary" 
-                      variant="contained"
-                      onClick={() => navigate('/payment')}
-                      sx={{ 
-                        mr: 2,
-                        background: 'linear-gradient(45deg, #C0C0C0 30%, #E8E8E8 90%)',
-                        color: '#000000',
-                        '&:hover': {
-                          background: 'linear-gradient(45deg, #A9A9A9 30%, #D3D3D3 90%)',
-                        }
-                      }}
-                    >
-                      Премиум
-                    </Button>
-                    <IconButton
-                      size="large"
-                      aria-label="account of current user"
-                      aria-controls="menu-appbar"
-                      aria-haspopup="true"
-                      onClick={handleMenu}
-                      color="inherit"
-                    >
-                      <AccountCircle />
-                    </IconButton>
-                    <Menu
-                      id="menu-appbar"
-                      anchorEl={anchorEl}
-                      anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'right',
-                      }}
-                      keepMounted
-                      transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                      }}
-                      open={Boolean(anchorEl)}
-                      onClose={handleClose}
-                    >
-                      {menuItems}
-                    </Menu>
-                  </>
-                ) : (
-                  <>
-                    <Button 
-                      color="inherit" 
-                      onClick={() => navigate('/login')}
-                      sx={{ mr: 1 }}
-                    >
-                      Войти
-                    </Button>
-                    <Button 
-                      color="inherit" 
-                      onClick={() => navigate('/register')}
-                      sx={{ mr: 1 }}
-                    >
-                      Регистрация
-                    </Button>
-                    <Button 
-                      color="primary" 
-                      variant="contained"
-                      onClick={() => navigate('/payment')}
-                      sx={{ 
-                        background: 'linear-gradient(45deg, #C0C0C0 30%, #E8E8E8 90%)',
-                        color: '#000000',
-                        '&:hover': {
-                          background: 'linear-gradient(45deg, #A9A9A9 30%, #D3D3D3 90%)',
-                        }
-                      }}
-                    >
-                      Премиум
-                    </Button>
-                  </>
-                )}
+                <Button
+                  color="inherit"
+                  onClick={() => navigate('/app')}
+                >
+                  Главная
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={() => navigate('/history')}
+                >
+                  История
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={() => navigate('/contacts')}
+                >
+                  Контакты
+                </Button>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={() => {
+                    navigate('/settings');
+                    handleClose();
+                  }}>
+                    Настройки
+                  </MenuItem>
+                  <MenuItem onClick={handleSignOut}>Выйти</MenuItem>
+                </Menu>
+              </>
+            ) : (
+              <>
+                <Button
+                  color="inherit"
+                  onClick={() => navigate('/contacts')}
+                >
+                  Контакты
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={() => navigate('/login')}
+                >
+                  Войти
+                </Button>
               </>
             )}
           </>

@@ -11,6 +11,7 @@ import History from './pages/History';
 import ResetPassword from './pages/ResetPassword';
 import Settings from './pages/Settings';
 import Payment from './pages/Payment';
+import ContactsPage from './pages/ContactsPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/payment" element={<Payment />} />
+                <Route path="/contacts" element={<ContactsPage />} />
               </Routes>
             </Box>
           </Box>
