@@ -39,6 +39,7 @@ const Navigation = () => {
   };
 
   const handleSignOut = async () => {
+    sessionStorage.setItem('isSigningOut', 'true');
     await signOut();
     handleClose();
     navigate('/');
@@ -78,6 +79,9 @@ const Navigation = () => {
             </ListItem>
             <ListItem button onClick={() => navigate('/contacts')}>
               <ListItemText primary="Контакты" />
+            </ListItem>
+            <ListItem button onClick={() => navigate('/payment')}>
+              <ListItemText primary="Премиум" />
             </ListItem>
             <ListItem button onClick={() => navigate('/settings')}>
               <ListItemText primary="Настройки" />
@@ -159,6 +163,14 @@ const Navigation = () => {
                   onClick={() => navigate('/contacts')}
                 >
                   Контакты
+                </Button>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  onClick={() => navigate('/payment')}
+                  sx={{ ml: 2 }}
+                >
+                  Премиум
                 </Button>
                 <IconButton
                   size="large"

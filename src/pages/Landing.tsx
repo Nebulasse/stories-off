@@ -12,7 +12,8 @@ import {
   keyframes
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 // Анимации
 const float = keyframes`
@@ -31,6 +32,18 @@ const Landing = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isSigningOut = sessionStorage.getItem('isSigningOut') === 'true';
+    if (user && !isSigningOut) {
+      navigate('/app', { replace: true });
+    }
+    if (!user && isSigningOut) {
+      sessionStorage.removeItem('isSigningOut');
+    }
+  }, [user, navigate]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
