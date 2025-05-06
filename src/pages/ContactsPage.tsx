@@ -51,6 +51,11 @@ const ContactsPage: React.FC = () => {
             </Typography>
             
             <Typography variant="body1" gutterBottom>
+              <strong>ИНН самозанятого:</strong><br />
+              236503390144
+            </Typography>
+            
+            <Typography variant="body1" gutterBottom>
               <strong>КПП при необходимости:</strong><br />
               771301001
             </Typography>
