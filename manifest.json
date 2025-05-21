@@ -10,14 +10,14 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/assets/icon.png",
-      "sizes": "1024x1024",
+      "src": "/icon512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/adaptive-icon.png",
-      "sizes": "1024x1024",
+      "src": "/maskable-icon-512x512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }

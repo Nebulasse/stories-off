@@ -7,10 +7,10 @@ const urlsToCache = [
   '/styles.css',
   '/app.js',
   '/manifest.json',
-  '/assets/splash.png',
-  '/assets/icon.png',
-  '/assets/adaptive-icon.png',
-  '/assets/favicon.png'
+  '/splash.png',
+  '/icon512.png',
+  '/maskable-icon-512x512.png',
+  '/favicon.png'
 ];
 
 // Установка Service Worker и кэширование статических файлов
