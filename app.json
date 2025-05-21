@@ -1,12 +1,33 @@
 {
   "expo": {
+    "name": "StoriesOff",
+    "slug": "storiesoff",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "android": {
+      "package": "com.kileuss.storiesoff",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kileuss.storiesoff"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
     "extra": {
       "eas": {
         "projectId": "347c4e64-ff1c-4699-9883-2a51dc3cd04c"
       }
-    },
-    "android": {
-      "package": "com.kileuss.storiesoff"
     }
   }
 }

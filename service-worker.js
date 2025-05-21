@@ -1,11 +1,16 @@
 // Имя кэша
-const CACHE_NAME = 'stories-off-cache-v1';
+const CACHE_NAME = 'storiesoff-v2';
 // Файлы для кэширования
 const urlsToCache = [
   '/',
   '/index.html',
-  '/src/main.tsx', // Добавьте сюда пути к вашим основным файлам
-  // Добавьте другие ресурсы, которые нужно кэшировать (CSS, JS, изображения, шрифты)
+  '/styles.css',
+  '/app.js',
+  '/manifest.json',
+  '/assets/splash.png',
+  '/assets/icon.png',
+  '/assets/adaptive-icon.png',
+  '/assets/favicon.png'
 ];
 
 // Установка Service Worker и кэширование статических файлов
@@ -29,7 +34,18 @@ self.addEventListener('fetch', (event) => {
           return response;
         }
         // Иначе, запрашиваем из сети
-        return fetch(event.request);
+        return fetch(event.request)
+          .then(response => {
+            if (!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
+            const responseToCache = response.clone();
+            caches.open(CACHE_NAME)
+              .then(cache => {
+                cache.put(event.request, responseToCache);
+              });
+            return response;
+          });
       })
   );
 });
