@@ -12,7 +12,7 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     minify: 'terser',
-    manifest: false,
+    manifest: true,
     terserOptions: {
       compress: {
         drop_console: true,
