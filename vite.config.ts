@@ -20,6 +20,10 @@ export default defineConfig({
       }
     },
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        manifest: path.resolve(__dirname, 'manifest.json')
+      },
       output: {
         entryFileNames: `[name].js`,
         assetFileNames: `[name].[ext]`,
