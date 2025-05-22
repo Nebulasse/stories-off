@@ -12,6 +12,7 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     minify: 'terser',
+    manifest: false,
     terserOptions: {
       compress: {
         drop_console: true,
@@ -20,6 +21,8 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
+        entryFileNames: `[name].js`,
+        assetFileNames: `[name].[ext]`,
         manualChunks: {
           'vendor': [
             'react',
