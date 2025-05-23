@@ -1,0 +1,364 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3    Copyright 2019 Google Inc. All Rights Reserved.
+4
+5     Licensed under the Apache License, Version 2.0 (the "License");
+6     you may not use this file except in compliance with the License.
+7     You may obtain a copy of the License at
+8
+9         http://www.apache.org/licenses/LICENSE-2.0
+10
+11     Unless required by applicable law or agreed to in writing, software
+12     distributed under the License is distributed on an "AS IS" BASIS,
+13     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+14     See the License for the specific language governing permissions and
+15     limitations under the License.
+16-->
+17<!--
+18 The "package" attribute is rewritten by the Gradle build with the value of applicationId.
+19     It is still required here, as it is used to derive paths, for instance when referring
+20     to an Activity by ".MyActivity" instead of the full name. If more Activities are added to the
+21     application, the package attribute will need to reflect the correct path in order to use
+22     the abbreviated format.
+23-->
+24<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+25    package="com.storiesoff.app"
+26    android:versionCode="3"
+27    android:versionName="1.0.0" >
+28
+29    <uses-sdk
+30        android:minSdkVersion="21"
+31        android:targetSdkVersion="35" />
+32
+33    <uses-permission android:name="android.permission.INTERNET" />
+33-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:26:9-70
+33-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:26:26-68
+34    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+34-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:28:9-80
+34-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:28:26-78
+35
+36    <queries>
+36-->[com.google.androidbrowserhelper:androidbrowserhelper:2.6.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\ea419625c265a1b4c789924514d4aeb7\transformed\androidbrowserhelper-2.6.1\AndroidManifest.xml:22:5-30:15
+37        <intent>
+37-->[com.google.androidbrowserhelper:androidbrowserhelper:2.6.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\ea419625c265a1b4c789924514d4aeb7\transformed\androidbrowserhelper-2.6.1\AndroidManifest.xml:23:9-29:18
+38            <action android:name="android.intent.action.VIEW" />
+38-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:137:17-68
+38-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:137:25-66
+39
+40            <category android:name="android.intent.category.BROWSABLE" />
+40-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:139:17-77
+40-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:139:27-75
+41
+42            <data android:scheme="https" />
+42-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:140:17-143:19
+42-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:140:23-45
+43        </intent>
+44    </queries>
+45
+46    <permission
+46-->[androidx.core:core:1.13.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\a5429f7b20c607b890f08b5283ad4ec0\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+47        android:name="com.storiesoff.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+47-->[androidx.core:core:1.13.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\a5429f7b20c607b890f08b5283ad4ec0\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+48        android:protectionLevel="signature" />
+48-->[androidx.core:core:1.13.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\a5429f7b20c607b890f08b5283ad4ec0\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+49
+50    <uses-permission android:name="com.storiesoff.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+50-->[androidx.core:core:1.13.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\a5429f7b20c607b890f08b5283ad4ec0\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+50-->[androidx.core:core:1.13.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\a5429f7b20c607b890f08b5283ad4ec0\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+51
+52    <application
+52-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:37:5-188:19
+53        android:name="com.storiesoff.app.Application"
+53-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:38:9-35
+54        android:allowBackup="true"
+54-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:39:9-35
+55        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+55-->[androidx.core:core:1.13.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\a5429f7b20c607b890f08b5283ad4ec0\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+56        android:extractNativeLibs="true"
+57        android:icon="@mipmap/ic_launcher"
+57-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:40:9-43
+58        android:label="@string/appName"
+58-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:41:9-40
+59        android:manageSpaceActivity="com.google.androidbrowserhelper.trusted.ManageDataLauncherActivity"
+59-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:43:9-105
+60        android:supportsRtl="true"
+60-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:45:9-35
+61        android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+61-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:46:9-68
+62        <meta-data
+62-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:48:9-50:58
+63            android:name="asset_statements"
+63-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:49:13-44
+64            android:resource="@string/assetStatements" />
+64-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:50:13-55
+65        <meta-data
+65-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:54:9-56:52
+66            android:name="twa_generator"
+66-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:55:13-41
+67            android:value="@string/generatorApp" />
+67-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:56:13-49
+68
+69        <activity android:name="com.google.androidbrowserhelper.trusted.ManageDataLauncherActivity" >
+69-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:63:13-67:24
+69-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:63:23-104
+70            <meta-data
+70-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:64:13-66:53
+71                android:name="android.support.customtabs.trusted.MANAGE_SPACE_URL"
+71-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:65:17-83
+72                android:value="@string/launchUrl" />
+72-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:66:17-50
+73        </activity>
+74        <activity
+74-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:70:9-149:20
+75            android:name="com.storiesoff.app.LauncherActivity"
+75-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:70:19-50
+76            android:alwaysRetainTaskState="true"
+76-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:71:13-49
+77            android:exported="true"
+77-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:73:13-36
+78            android:label="@string/launcherName" >
+78-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:72:13-49
+79            <meta-data
+79-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:74:13-75:53
+80                android:name="android.support.customtabs.trusted.DEFAULT_URL"
+80-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:74:24-85
+81                android:value="@string/launchUrl" />
+81-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:75:17-50
+82            <meta-data
+82-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:77:13-79:58
+83                android:name="android.support.customtabs.trusted.STATUS_BAR_COLOR"
+83-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:78:17-83
+84                android:resource="@color/colorPrimary" />
+84-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:79:17-55
+85            <meta-data
+85-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:83:13-85:62
+86                android:name="android.support.customtabs.trusted.STATUS_BAR_COLOR_DARK"
+86-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:84:17-88
+87                android:resource="@color/colorPrimaryDark" />
+87-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:85:17-59
+88            <meta-data
+88-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:87:13-89:61
+89                android:name="android.support.customtabs.trusted.NAVIGATION_BAR_COLOR"
+89-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:88:17-87
+90                android:resource="@color/navigationColor" />
+90-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:89:17-58
+91            <meta-data
+91-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:91:13-93:65
+92                android:name="android.support.customtabs.trusted.NAVIGATION_BAR_COLOR_DARK"
+92-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:92:17-92
+93                android:resource="@color/navigationColorDark" />
+93-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:93:17-62
+94            <meta-data
+94-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:95:13-97:68
+95                android:name="androix.browser.trusted.NAVIGATION_BAR_DIVIDER_COLOR"
+95-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:96:17-84
+96                android:resource="@color/navigationDividerColor" />
+96-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:97:17-65
+97            <meta-data
+97-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:99:13-101:72
+98                android:name="androix.browser.trusted.NAVIGATION_BAR_DIVIDER_COLOR_DARK"
+98-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:100:17-89
+99                android:resource="@color/navigationDividerColorDark" />
+99-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:101:17-69
+100            <meta-data
+100-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:103:13-104:54
+101                android:name="android.support.customtabs.trusted.SPLASH_IMAGE_DRAWABLE"
+101-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:103:24-95
+102                android:resource="@drawable/splash" />
+102-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:104:17-52
+103            <meta-data
+103-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:106:13-107:60
+104                android:name="android.support.customtabs.trusted.SPLASH_SCREEN_BACKGROUND_COLOR"
+104-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:106:24-104
+105                android:resource="@color/backgroundColor" />
+105-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:107:17-58
+106            <meta-data
+106-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:109:13-110:71
+107                android:name="android.support.customtabs.trusted.SPLASH_SCREEN_FADE_OUT_DURATION"
+107-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:109:24-105
+108                android:value="@integer/splashScreenFadeOutDuration" />
+108-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:110:17-69
+109            <meta-data
+109-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:112:13-113:60
+110                android:name="android.support.customtabs.trusted.FILE_PROVIDER_AUTHORITY"
+110-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:112:24-97
+111                android:value="@string/providerAuthority" />
+111-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:113:17-58
+112            <meta-data
+112-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:115:13-97
+113                android:name="android.app.shortcuts"
+113-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:115:24-60
+114                android:resource="@xml/shortcuts" />
+114-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:115:61-94
+115            <meta-data
+115-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:117:13-118:56
+116                android:name="android.support.customtabs.trusted.FALLBACK_STRATEGY"
+116-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:117:24-91
+117                android:value="@string/fallbackType" />
+117-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:118:17-53
+118            <meta-data
+118-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:124:13-125:54
+119                android:name="android.support.customtabs.trusted.SCREEN_ORIENTATION"
+119-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:124:24-92
+120                android:value="@string/orientation" />
+120-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:125:17-52
+121
+122            <intent-filter>
+122-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:131:13-134:29
+123                <action android:name="android.intent.action.MAIN" />
+123-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:132:17-69
+123-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:132:25-66
+124
+125                <category android:name="android.intent.category.LAUNCHER" />
+125-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:133:17-77
+125-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:133:27-74
+126            </intent-filter>
+127            <intent-filter android:autoVerify="true" >
+127-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:136:13-144:29
+127-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:136:28-53
+128                <action android:name="android.intent.action.VIEW" />
+128-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:137:17-68
+128-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:137:25-66
+129
+130                <category android:name="android.intent.category.DEFAULT" />
+130-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:138:17-76
+130-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:138:27-73
+131                <category android:name="android.intent.category.BROWSABLE" />
+131-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:139:17-77
+131-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:139:27-75
+132
+133                <data
+133-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:140:17-143:19
+134                    android:host="@string/hostName"
+134-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:141:21-52
+135                    android:scheme="https" />
+135-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:140:23-45
+136            </intent-filter>
+137        </activity>
+138        <activity android:name="com.google.androidbrowserhelper.trusted.FocusActivity" />
+138-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:151:9-90
+138-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:151:19-87
+139        <activity
+139-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:153:9-154:62
+140            android:name="com.google.androidbrowserhelper.trusted.WebViewFallbackActivity"
+140-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:153:19-97
+141            android:configChanges="orientation|screenSize" />
+141-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:154:13-59
+142
+143        <provider
+143-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:156:9-164:20
+144            android:name="androidx.core.content.FileProvider"
+144-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:157:13-62
+145            android:authorities="@string/providerAuthority"
+145-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:158:13-60
+146            android:exported="false"
+146-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:160:13-37
+147            android:grantUriPermissions="true" >
+147-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:159:13-47
+148            <meta-data
+148-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:161:13-163:53
+149                android:name="android.support.FILE_PROVIDER_PATHS"
+149-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:162:17-67
+150                android:resource="@xml/filepaths" />
+150-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:163:17-50
+151        </provider>
+152
+153        <service
+153-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:166:9-181:19
+154            android:name="com.storiesoff.app.DelegationService"
+154-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:167:13-46
+155            android:enabled="@bool/enableNotification"
+155-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:168:13-55
+156            android:exported="@bool/enableNotification" >
+156-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:169:13-56
+157            <meta-data
+157-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:172:17-174:73
+158                android:name="android.support.customtabs.trusted.SMALL_ICON"
+158-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:173:21-81
+159                android:resource="@drawable/ic_notification_icon" />
+159-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:174:21-70
+160
+161            <intent-filter>
+161-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:177:13-180:29
+162                <action android:name="android.support.customtabs.trusted.TRUSTED_WEB_ACTIVITY_SERVICE" />
+162-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:178:17-105
+162-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:178:25-103
+163
+164                <category android:name="android.intent.category.DEFAULT" />
+164-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:138:17-76
+164-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:138:27-73
+165            </intent-filter>
+166        </service>
+167
+168        <activity android:name="com.google.androidbrowserhelper.trusted.NotificationPermissionRequestActivity" />
+168-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:184:13-118
+168-->C:\coding\StoriesOff\app\src\main\AndroidManifest.xml:184:23-115
+169
+170        <provider
+170-->[androidx.emoji2:emoji2:1.3.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\5cb7738f5242d8c4e38c8ffa2b265b31\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+171            android:name="androidx.startup.InitializationProvider"
+171-->[androidx.emoji2:emoji2:1.3.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\5cb7738f5242d8c4e38c8ffa2b265b31\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+172            android:authorities="com.storiesoff.app.androidx-startup"
+172-->[androidx.emoji2:emoji2:1.3.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\5cb7738f5242d8c4e38c8ffa2b265b31\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+173            android:exported="false" >
+173-->[androidx.emoji2:emoji2:1.3.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\5cb7738f5242d8c4e38c8ffa2b265b31\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+174            <meta-data
+174-->[androidx.emoji2:emoji2:1.3.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\5cb7738f5242d8c4e38c8ffa2b265b31\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+175                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+175-->[androidx.emoji2:emoji2:1.3.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\5cb7738f5242d8c4e38c8ffa2b265b31\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+176                android:value="androidx.startup" />
+176-->[androidx.emoji2:emoji2:1.3.0] C:\Users\costi\.gradle\caches\8.11.1\transforms\5cb7738f5242d8c4e38c8ffa2b265b31\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+177            <meta-data
+177-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\costi\.gradle\caches\8.11.1\transforms\4bc52031417e9743197e36b704fe409f\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+178                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+178-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\costi\.gradle\caches\8.11.1\transforms\4bc52031417e9743197e36b704fe409f\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+179                android:value="androidx.startup" />
+179-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\costi\.gradle\caches\8.11.1\transforms\4bc52031417e9743197e36b704fe409f\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+180            <meta-data
+180-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+181                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+181-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+182                android:value="androidx.startup" />
+182-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+183        </provider>
+184
+185        <receiver
+185-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+186            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+186-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+187            android:directBootAware="false"
+187-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+188            android:enabled="true"
+188-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+189            android:exported="true"
+189-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+190            android:permission="android.permission.DUMP" >
+190-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+191            <intent-filter>
+191-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+192                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+192-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+192-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+193            </intent-filter>
+194            <intent-filter>
+194-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+195                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+195-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+195-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+196            </intent-filter>
+197            <intent-filter>
+197-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+198                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+198-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+198-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+199            </intent-filter>
+200            <intent-filter>
+200-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+201                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+201-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+201-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\costi\.gradle\caches\8.11.1\transforms\bb4a0d32d1b17a1dcea0cf71d2bde5e0\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+202            </intent-filter>
+203        </receiver>
+204    </application>
+205
+206</manifest>
