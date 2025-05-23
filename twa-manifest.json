@@ -1,0 +1,19 @@
+{
+  "packageId": "com.storiesoff.app",
+  "host": "stories-off.vercel.app",
+  "name": "Stories Off",
+  "launcherName": "StoriesOff",
+  "display": "standalone",
+  "themeColor": "#000000",
+  "navigationColor": "#000000",
+  "backgroundColor": "#000000",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://stories-off.vercel.app/icon512.png",
+  "maskableIconUrl": "https://stories-off.vercel.app/maskable-icon-512x512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./storiesoff.keystore",
+    "alias": "storiesoff"
+  }
+} 
