@@ -1,0 +1,8 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.storiesoff.app",
+      "sha256_cert_fingerprints": ["69F89F6AB2F713B14146D821031C56AD5058B5EE7C1BF679CA95837D158ACD68"]
+    }
+  }]
