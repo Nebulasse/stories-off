@@ -13,11 +13,11 @@
   "routes": [
     {
       "src": "/manifest.json",
+      "dest": "/manifest.json",
       "headers": {
         "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=0, must-revalidate"
-      },
-      "continue": true
+        "Cache-Control": "no-cache"
+      }
     },
     {
       "src": "/assets/(.*)",
@@ -30,21 +30,6 @@
     {
       "src": "/(.*)",
       "dest": "/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/manifest.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json"
-        },
-        {
-          "key": "Content-Disposition",
-          "value": ""
-        }
-      ]
     }
   ]
 } 
